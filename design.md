@@ -85,5 +85,7 @@ make sure we handle total (display on every page)
 const {pizzas} = this.props.currentOrder
 {pizzas.reduce((sum, index) => sum)}
 
+fix street address bug
+
 style pizza list item (cards? table? list?) MATERIAL UI
 

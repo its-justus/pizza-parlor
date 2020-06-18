@@ -19,12 +19,12 @@ class CustomerInfoForm extends React.Component {
 		//do stuff
 		event.preventDefault();
 		// navigate to confirm checkout page. this will trigger componentWillUnmount, storing the form data to the store
-		// this.props.history.push('/confirm')
+		this.props.history.push('/checkout');
 	}
 
 	componentDidMount() {
 		//
-		const {customer_name, street_address, city, zip, type} = this.props.currentOrder
+		const {customer_name, street_address, city, zip, type} = {...this.props.currentOrder}
 		this.setState({customer_name, street_address, city, zip, type});
 	}
 
@@ -45,12 +45,12 @@ class CustomerInfoForm extends React.Component {
 					onChange={(event) => this.handleChange(event, 'customer_name')} 
 				/>
                 <input
-					street="street_adress"
+					street="street_address"
 					value={this.state.street_address}
 					placeholder="Street Adress"
 					type="text" 
 					maxLength={1000} 
-					onChange={(event) => this.handleChange(event, 'street_adress')} 
+					onChange={(event) => this.handleChange(event, 'street_address')} 
 				/>
 				<input
 					name="city"
@@ -72,7 +72,7 @@ class CustomerInfoForm extends React.Component {
 					<option value="delivery">Delivery</option>
 					<option value="pickup">Pickup</option>
 				</select>
-        <button onCLick={this.submitInfo}>Submit</button>
+				<button onClick={this.submitInfo}>Submit</button>
 			</form>
 		)
 	}

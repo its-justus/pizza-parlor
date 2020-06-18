@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class PizzaListItem extends Component {
 
@@ -10,11 +11,21 @@ class PizzaListItem extends Component {
 
   //TEMPORARY
   //this will change whatever toggle is to the opposite
-  toggle = () => {
-    this.setState(state =>({
-      toggle: !this.state.toggle,
-    }))
-  }
+  // toggle = () => {
+  //   this.setState(state =>({
+  //     toggle: !this.state.toggle,
+  //   }))
+  // }
+
+  addPizzaToCart = () => {
+    console.log(this.props.item);
+const { dispatch } = this.props;
+dispatch({ type: "UPDATE_PIZZAS", payload: this.props.item});
+
+this.setState(state =>({
+  toggle: !this.state.toggle,
+}))
+}
    
 
     render() {
@@ -22,9 +33,10 @@ class PizzaListItem extends Component {
             <li>
               Add image {this.props.item.name}: {this.props.item.price}
               {this.state.toggle === false ? (
-                <button onClick={this.toggle}>Add to Cart</button>
+                <button onClick={this.addPizzaToCart}>Add to Cart</button>
               ) : (
-                <button onClick={this.toggle}>Remove</button>
+                // TODO: change this so delete works
+                <button onClick={this.addPizzaToCart}>Remove</button>
               )}
             </li>
         );
@@ -38,4 +50,4 @@ const mapStateToProps = (state) => {
     } 
 }
 
-export default connect(mapStateToProps)(PizzaListItem);
+export default withRouter(connect(mapStateToProps)(PizzaListItem));

@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PizzaListItem from '../PizzaListItem/PizzaListItem';
 import { connect } from 'react-redux';
 import axios from "axios";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
+import { withRouter } from "react-router";
 
 class PizzaList extends Component {
   componentDidMount() {
@@ -28,17 +35,21 @@ class PizzaList extends Component {
       });
   };
 
+next = () => {
+  this.props.history.push('/customer-info') //takes customer to next "page"
+}
+
   render() {
-    const { pizza } = this.props;
+    const { pizza, toggle } = this.props;
     return (
       <div>
         <ul>
           {pizza.map((item, i) => {
             console.log("in PizzaList", item, i);
-            return <PizzaListItem key={i} item={item} />;
+            return <PizzaListItem key={i} item={item} toggle={toggle} />;
           })}
         </ul>
-        <button>NEXT</button>
+        <button onClick = {this.next}>NEXT</button>
       </div>
     );
   }
@@ -52,4 +63,4 @@ const mapStateToProps = (state) => {
       } 
 }
 
-export default connect(mapStateToProps)(PizzaList);
+export default withRouter(connect(mapStateToProps)(PizzaList));
