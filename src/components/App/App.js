@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 // import 'bootstrap/dist/css/bootstrap.min.css'; //TODO: install bootstrap
 //TODO: import/install icon library
+
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -17,9 +20,10 @@ class App extends Component {
         {/* Step 2: Customer Info */}
         {/* Step 3: Checkout */}
         {/* Admin Order Page */}
+        <Footer/>
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App);
