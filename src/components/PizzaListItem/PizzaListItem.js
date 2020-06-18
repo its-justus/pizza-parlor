@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class PizzaListItem extends Component {
-
   state = {
-    toggle: false,
-  }
+    selected: false,
+  };
 
   //TEMPORARY
   //this will change whatever toggle is to the opposite
@@ -17,37 +16,50 @@ class PizzaListItem extends Component {
   //   }))
   // }
 
+  componentDidMount = () => {
+    let pizzaInCart = this.props.currentOrder.pizzas.find((cur) => cur.id ===this.props.item.id);
+    console.log("pizzaInCart",pizzaInCart);
+  }
+
   addPizzaToCart = () => {
     console.log(this.props.item);
-const { dispatch } = this.props;
-dispatch({ type: "UPDATE_PIZZAS", payload: this.props.item});
+    const { dispatch } = this.props;
+    dispatch({ type: "ADD_PIZZA", payload: this.props.item });
 
-this.setState(state =>({
-  toggle: !this.state.toggle,
-}))
-}
-   
+    this.setState((state) => ({
+      toggle: !this.state.toggle,
+    }));
+  };
+  removeFromCart = () => {
+  const {dispatch} = this.props
+  dispatch({type: "REMOVE_PIZZA", payload: this.props.item});
 
-    render() {
-        return (
-            <li>
-              Add image {this.props.item.name}: {this.props.item.price}
-              {this.state.toggle === false ? (
-                <button onClick={this.addPizzaToCart}>Add to Cart</button>
-              ) : (
-                // TODO: change this so delete works
-                <button onClick={this.addPizzaToCart}>Remove</button>
-              )}
-            </li>
-        );
-    }
+    this.setState((state) => ({
+      toggle: !this.state.toggle,
+    }));
+
+  }
+  render() {
+    const pizza = this.props.item;
+    return (
+      <li>
+        Add image {this.props.item.name}: {this.props.item.price}
+        {!this.state.selected ? (
+          <button onClick={this.addPizzaToCart}>Add to Cart</button>
+        ) : (
+          // TODO: change this so delete works
+          <button onClick={this.removeFromCart}>Remove</button>
+        )}
+      </li>
+    );
+  }
 }
 const mapStateToProps = (state) => {
+  console.log("PizzaListItem.mapStateToProps", state);
   return {
-      pizza: state.pizza,
-      order: state.order,
-      currentOrder: state.currentOrder
-    } 
-}
+    currentOrder: state.currentOrder,
+    orders: state.orders
+  };
+};
 
 export default withRouter(connect(mapStateToProps)(PizzaListItem));

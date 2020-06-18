@@ -25,6 +25,30 @@ import {
 
 
 class App extends Component {
+  componentDidMount() {
+    // react Component method
+    this.refreshPizzas();
+  }
+
+  refreshPizzas = () => {
+    const { dispatch } = this.props;
+    axios({
+      method: "GET",
+      url: "/api/pizza",
+    })
+      .then((response) => {
+        console.log("This is in GET in app", response.data);
+        // response.data will be the array of artists
+        dispatch({ type: "GET_PIZZAS", payload: response.data });
+        // this.setState({
+        //   artists: response.data,
+        // });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
 
   // state = {
   //   toggle: false,

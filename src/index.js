@@ -25,24 +25,29 @@ const pizzaReducer = (state=[], action) => {
 	return newState;
 }
 
-//here, state is an object
-const currentOrderReducer = (state={}, action) => {
+
+const currentOrderReducer = (state={pizzas: []}, action) => {
 	let newState = {...state};
 	if(action.type ==="UPDATE_CUSTOMER_INFO") {
 		// payload need to be an object containing all of the customer info
 		newState = {...newState, ...action.payload}
-	} else if(action.type ==="UPDATE_PIZZAS") {
+	} else if(action.type ==="ADD_PIZZA") {
 		// payload needs to be an array of pizza objects
-		newState = {...newState, pizzas: action.payload}
+		newState = { ...newState, pizzas: [...newState.pizzas, action.payload,]}
+	} else if(action.type ==="REMOVE_PIZZA"){
+		let filteredPizzas = newState.pizzas;
+		filteredPizzas.filter((pizza) => pizza.id === action.payload.id);
+		newState = {...newState, pizzas: filteredPizzas}
 	}
 	return newState;
 }
 
+
 const storeInstance = createStore(
 	combineReducers({
-        pizza: pizzaReducer, 
-        order: orderReducer, 
-        currentOrder: currentOrderReducer
+        pizzas: pizzaReducer, 
+        orders: orderReducer, 
+		currentOrder: currentOrderReducer,
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

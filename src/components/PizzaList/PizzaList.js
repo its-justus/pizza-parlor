@@ -11,41 +11,22 @@ import {
 import { withRouter } from "react-router";
 
 class PizzaList extends Component {
-  componentDidMount() {
-    // react Component method
-    this.refreshPizzas();
-  }
-
-  refreshPizzas = () => {
-    const { dispatch } = this.props;
-    axios({
-      method: "GET",
-      url: "/api/pizza",
-    })
-      .then((response) => {
-        console.log("This is in GET in app", response.data);
-        // response.data will be the array of artists
-        dispatch({ type: "GET_PIZZAS", payload: response.data });
-        // this.setState({
-        //   artists: response.data,
-        // });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  
+  
 
 next = () => {
   this.props.history.push('/customer-info') //takes customer to next "page"
 }
 
   render() {
-    const { pizza, toggle } = this.props;
+    const { pizzas, toggle } = this.props;
     return (
       <div>
         <ul>
-          {pizza.map((item, i) => {
-            console.log("in PizzaList", item, i);
+          {/* TODO: NEED TOTAL DISPLAYED ON THIS 'page' */}
+          {pizzas.map((item, i) => {
+            //console.log("in PizzaList", item, i);
+            
             return <PizzaListItem key={i} item={item} toggle={toggle} />;
           })}
         </ul>
@@ -57,8 +38,8 @@ next = () => {
 
 const mapStateToProps = (state) => {
     return {
-        pizza: state.pizza,
-        order: state.order,
+        pizzas: state.pizzas,
+        orders: state.orders,
         currentOrder: state.currentOrder
       } 
 }

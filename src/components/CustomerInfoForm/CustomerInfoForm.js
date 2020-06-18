@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 class CustomerInfoForm extends React.Component {
 	state = {
@@ -35,6 +36,7 @@ class CustomerInfoForm extends React.Component {
 	render() {
 		console.log("CustomerInfoForm.render()", this.state);
 		return(
+			// TODO:NEED TOTAL DISPLAYED ON THIS 'page'
 			<form>
 				<input
 					name="customer_name"
@@ -84,4 +86,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(CustomerInfoForm);
+export default withRouter(connect(mapStateToProps)(CustomerInfoForm));
