@@ -1,3 +1,5 @@
+## Step 1: Select Pizzas /
+
 As page opens, want to start on  ## Step 1: Select Your Pizza (STRETCH: create welcome page)
 NOTE: I am guessing we don't want NavLinks because this is a sequential process?
 If we are comfortable with it, use cards to show off pizzas. We can always start though with just buttons
@@ -12,7 +14,7 @@ Remove functionality will also appear somewhere in here
 
 Once pizzas are selected, display total and then hit next button
 
-## Step 2: Customer Information
+## Step 2: Customer Information /customer-info
 This will have table that gets information from customer 
 Need form component
 ---------------
@@ -22,8 +24,9 @@ Need form component
 ---------------
 Pickup or delivery toggle also here
 If information is verified (nothing empty), allow next button click
+sweetAlert for confirmation of information? Here or checkout?
 
-## Step 3: Checkout
+## Step 3: Checkout /checkout
 Show customer information, pizzas selected in a table, total order and once button press goes through, clear cart
 and navigate back to step 1
 Need table component -> This could be 2 components? Also need to have information (could be its own component)
@@ -33,7 +36,7 @@ Need table component -> This could be 2 components? Also need to have informatio
 |          -> |
 ---------------
 
-## SECRET STEP: Admin page
+## SECRET STEP: Admin page /admin
 will be available to anyone with the url http://localhost:3000/admin
 ---------------
 |ORDERS       |
@@ -69,3 +72,18 @@ pizzas
 Add back buttons to all pages
 Add list of pizzas ordered to admin order page
 Add updated pictures for pizzas
+turn customer info form into sweetalerts popup
+
+
+
+## After lunch
+setup router
+	add navlinks for now
+build confirmation page
+build admin page
+make sure we handle total (display on every page)
+const {pizzas} = this.props.currentOrder
+{pizzas.reduce((sum, index) => sum)}
+
+style pizza list item (cards? table? list?) MATERIAL UI
+
