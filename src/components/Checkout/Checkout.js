@@ -55,7 +55,6 @@ class Checkout extends React.Component {
           {street_address}
           {city}
         </div>
-
         <table>
           <thead>
             <tr>
