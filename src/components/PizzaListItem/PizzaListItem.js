@@ -18,9 +18,11 @@ class PizzaListItem extends Component {
   // }
 
   componentDidMount = () => {
-    let pizzaInCart = this.props.currentOrder.pizzas.find((cur) => cur.id ===this.props.item.id);
-    console.log("pizzaInCart",pizzaInCart);
-  }
+    let pizzaInCart = this.props.currentOrder.pizzas.find(
+      (cur) => cur.id === this.props.item.id
+    );
+    console.log("pizzaInCart", pizzaInCart);
+  };
 
   addPizzaToCart = () => {
     console.log(this.props.item);
@@ -32,20 +34,20 @@ class PizzaListItem extends Component {
     }));
   };
   removeFromCart = () => {
-  const {dispatch} = this.props
-  dispatch({type: "REMOVE_PIZZA", payload: this.props.item});
+    const { dispatch } = this.props;
+    dispatch({ type: "REMOVE_PIZZA", payload: this.props.item });
 
     this.setState((state) => ({
       toggle: !this.state.toggle,
     }));
-
-  }
+  };
   //DESIGN QUESTION: should we have the descriptions appear on a click like we did in gallery? Or just display it below pic?
   render() {
     const pizza = this.props.item;
     return (
-      <li> 
-        {<img src = {this.props.item.image_path} alt ="pizza pic" />} {this.props.item.name}: {this.props.item.price}
+      <li>
+        {<img src={this.props.item.image_path} alt="pizza pic" />}{" "}
+        {this.props.item.name}: {this.props.item.price}
         {!this.state.selected ? (
           <button onClick={this.addPizzaToCart}>Add to Cart</button>
         ) : (
@@ -60,7 +62,7 @@ const mapStateToProps = (state) => {
   console.log("PizzaListItem.mapStateToProps", state);
   return {
     currentOrder: state.currentOrder,
-    orders: state.orders
+    orders: state.orders,
   };
 };
 
