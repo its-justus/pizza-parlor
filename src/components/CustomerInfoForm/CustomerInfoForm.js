@@ -35,9 +35,11 @@ class CustomerInfoForm extends React.Component {
 
 	render() {
 		console.log("CustomerInfoForm.render()", this.state);
+		const { pizzas } = this.props.currentOrder;
 		return(
 			// TODO:NEED TOTAL DISPLAYED ON THIS 'page'
 			//Why doesn't 'required' work on an input?
+			<>
 			<form>
 				<input required
 					name="customer_name"
@@ -77,6 +79,12 @@ class CustomerInfoForm extends React.Component {
 				</select>
 				<button onClick={this.submitInfo}>Submit</button>
 			</form>
+			<span>
+				Total: $
+								{/* todo fix sum to be number */}
+				{pizzas && pizzas.reduce((sum, cur) => { return sum + Number(cur.price) }, 0).toFixed(2)}
+			</span>
+			</>
 		)
 	}
 }
