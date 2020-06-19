@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 })
 
 // POST a new order
+//should it be on just '/' or some other url?
 router.post('/', async (req, res) => {
     const client = await pool.connect();
 

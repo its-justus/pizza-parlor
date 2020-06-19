@@ -3,7 +3,21 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 class Checkout extends React.Component {
+	checkoutSubmit = () => {
+		axios({
+			method: "POST",
+			url: "/api/order",
+			data: this.props.currentOrder
+		})
+			.then((response) => {
+				this.props.refreshPizzas();
+				// this.setState({ userInput: '' });
 
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
 	render() {
 		const {customer_name, street_address, city, zip, type, pizzas} = this.props.currentOrder;
 		// const {allPizzas} = this.props;
@@ -11,7 +25,7 @@ class Checkout extends React.Component {
 		return (
 			<div>
 				<h3>Your Order</h3>
-        <div>
+        <div> {/* TODO: create block (or card) that holds all of the customer's information*/}
           {customer_name}
           {street_address}
           {city}
@@ -31,10 +45,10 @@ class Checkout extends React.Component {
 				</table> 
                 <span>
                 Total: $
-                <br /> 
 								{/* todo fix sum to be number */}
                 {pizzas && pizzas.reduce((sum, cur) => {return sum + Number(cur.price)}, 0).toFixed(2)}
                 </span>
+				<button onClick={this.checkoutSubmit}>Complete Order</button>
 			</div>
             
 		)

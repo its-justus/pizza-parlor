@@ -71,21 +71,17 @@ pizzas
 ## STRETCH: 
 Add back buttons to all pages
 Add list of pizzas ordered to admin order page
-Add updated pictures for pizzas
 turn customer info form into sweetalerts popup
 
 
 
-## After lunch
-setup router
-	add navlinks for now
-build confirmation page
-build admin page
+## TODO (updated as of 5pm)
+STRETCH:build confirmation page (so "are you sure you want to checkout")
 make sure we handle total (display on every page)
-const {pizzas} = this.props.currentOrder
-{pizzas.reduce((sum, index) => sum)}
+change delivery/Pickup to radio input type?
+Fromat and make nice customer information on Checkout Page
+FIX ADMIN PAGE
+Alert user if data is not filled out on customer form
 
-fix street address bug
-
-style pizza list item (cards? table? list?) MATERIAL UI
-
+At some point... update all pizza images so they display correct image(i.e. do they look correct?)
+When all works, remove navlinks
