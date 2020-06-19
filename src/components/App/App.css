@@ -21,3 +21,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(172, 68, 9, 0.918);
+  color: white;
+  text-align: center;
+  height: 4%;
+}

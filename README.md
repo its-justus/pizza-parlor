@@ -1,14 +1,21 @@
 # React Pizza Parlor
+TODO: Update screenshots below with our own design
+TODO: Update stretch goals and explain which ones we got to
+TODO: Kyle will spellcheck things here
 
-Before you get started make sure to read through **ALL** requirements and outline a plan for your group. Assign out tasks and use branches to allow team members to work in parallel.
+The purpose of this application is to simulate a website in which customers can select pizzas from a menu, 
+enter in their information, and then review their order and information for checkout.
+It will also have a special page (accesible through `http://localhost:3000/admin`) that displays the
+name, time, and order total for each of the orders placed.
 
-### Setup
+### SETUP
 
-Server side code for baseline functionality has been provided for you. Each member of your team will need to create a `pizza_parlor` database.
+Server side code for baseline functionality has been provided. 
+Create a `pizza_parlor` database.
 
 **Import data**
 
-Right now, the owner enters all of the orders in SQL, but they want any of their employees to be able to enter a new order. The owner has provided some of the server side routes and a way to create their database with (`database.sql`). Your team should build out the following views.
+See database.sql for more database information
 
 **Start your server**
 
@@ -27,21 +34,12 @@ npm run client
 
 ## Base Mode ad API DOCS
 
-The tasks for Base Mode are broken down further [on this Trello Board](https://trello.com/b/aWXfG8D6/redux-pizza-parlor). Take time before diving into the code to copy this board and build out the plan even further.
-
-After starting up the server, the following routes should be available. You can test them with Postman.
 
 ### GET PIZZA  
 
 `/api/pizza`
 
 **Returns** an array of objects with *
-
-
-
-
-
-
 
 *, *name*, *description*, *image_path* and *cost* properties. 
 
@@ -117,3 +115,11 @@ This page **should not** appear in the navigation bar. Eventually the client wou
 - Add pictures to the `public/images` folder and update the image url for each pizza in the database.
 - Add a button on the orders page to track delivery status.
 - Allow admins to click on an order and see all of the details for that order (which pizzas were a part of that particular order). For the details of the order with `id` of `1`, it will be available to anyone with the url [http://localhost:3000/order/1](http://localhost:3000/order/1). This route is not built on the server, so you will need to create it.
+
+## LICENSE
+MIT
+
+## ACKNOWLEDGMENT
+Thanks for eveyone's teamwork as well as Emerging Digital Academy for this opportunity!
+
+## SUPPORT
