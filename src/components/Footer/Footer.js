@@ -10,7 +10,7 @@ class Footer extends Component {
     return (
       <footer className="App-footer">
         <p>
-          {copyright} Pod 4 {thisYear}
+          {copyright}  V = Pi(z*z)a  {thisYear}
         </p>
       </footer>
     ); // end return

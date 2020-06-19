@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import "./Admin.css";
+import "./Admin.css";
 import { connect } from "react-redux";
 import axios from "axios";
 
@@ -28,7 +28,7 @@ class Admin extends Component {
     const { orders } = this.props;
     console.log("this is orders", orders);
     return (
-      <table>
+      <table id = "adminTable">
         <thead>
           <tr>
             <th>Name</th>

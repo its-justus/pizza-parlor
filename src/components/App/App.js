@@ -45,23 +45,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <Header />
-          <div id="routerLinks">
-            <NavLink exact to="/">
-              Pizza List
-            </NavLink>
-            ||
-            <NavLink exact to="/customer-info">
-              Customer Information
-            </NavLink>
-            ||
-            <NavLink exact to="/checkout">
-              Checkout
-            </NavLink>
-            ||
-            <NavLink exact to="/admin">
-              Admin Page
-            </NavLink>
-          </div>
           <Switch>
             <Route exact path="/">
               <PizzaList />

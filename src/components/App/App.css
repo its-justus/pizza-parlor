@@ -1,16 +1,43 @@
+body {
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
+}
+form {
+  margin-bottom: 20px;
+}
+
+#review {
+  margin-top: 20px;
+}
+
+#previous {
+  margin-bottom: 20px;
+}
+
+.total {
+  font-size: 50px;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
   background-color: #222;
-  height: 70px;
+  height: 50px;
   padding: 20px;
   color: white;
+  margin-bottom: 20px;
+}
+.App-footer {
+  position: fixed;
+  font-size: 15px;
+  opacity: 0.8;
 }
 
 .App-title {
-  font-size: 1.5em;
+margin: auto;
+width: 50%;
 }
 
 .App-intro {
@@ -27,8 +54,9 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgba(172, 68, 9, 0.918);
+  background-color: rgba(0, 0, 0, 0.918);
   color: white;
   text-align: center;
   height: 4%;
+  
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { Input, TextField, Button, Select, MenuItem} from '@material-ui/core';
 
 // CustomerInfoForm represents the input form a client uses to enter their information
 class CustomerInfoForm extends React.Component {
@@ -15,6 +16,7 @@ class CustomerInfoForm extends React.Component {
 
 	// handle change handles input field changes
   handleChange = (event, fieldName) => {
+    console.log(`CustomerInfoForm.handleChange(${fieldName})`, event);
     this.setState({ [fieldName]: event.target.value });
   };
 	
@@ -24,6 +26,11 @@ class CustomerInfoForm extends React.Component {
     event.preventDefault();
     this.props.history.push("/checkout");
   };
+
+  previous = (event) => {
+    event.preventDefault();
+     this.props.history.push("/");
+  }
 
 	// we use componentDidMount to set our state after the client navigates back to
 	// this page
@@ -50,13 +57,16 @@ class CustomerInfoForm extends React.Component {
     const { pizzas } = this.props.currentOrder;
     return (
       // TODO:NEED TOTAL DISPLAYED ON THIS 'page'
-			//Why doesn't 'required' work on an input?
-			// required now works. didn't work before because submitting wasn't handled
-			// by the form
+      //Why doesn't 'required' work on an input?
+      // required now works. didn't work before because submitting wasn't handled
+      // by the form
       <>
+        <h2>Step 2: Please fill in your information</h2>
         <form onSubmit={this.submitInfo}>
-          <input
+          <TextField
+            variant="outlined"
             required
+            label="Name"
             name="customer_name"
             value={this.state.customer_name}
             placeholder="Name"
@@ -64,17 +74,23 @@ class CustomerInfoForm extends React.Component {
             maxLength={1000}
             onChange={(event) => this.handleChange(event, "customer_name")}
           />
-          <input
-						required
+          <br />
+          <TextField
+            variant="outlined"
+            required
+            label="Street Address"
             name="street_address"
             value={this.state.street_address}
-            placeholder="Street Adress"
+            placeholder="Street Address"
             type="text"
             maxLength={1000}
             onChange={(event) => this.handleChange(event, "street_address")}
           />
-          <input
-						required
+          <br />
+          <TextField
+            variant="outlined"
+            required
+            label="City"
             name="city"
             value={this.state.city}
             placeholder="City"
@@ -82,8 +98,11 @@ class CustomerInfoForm extends React.Component {
             maxLength={1000}
             onChange={(event) => this.handleChange(event, "city")}
           />
-          <input
-						required
+          <br />
+          <TextField
+            variant="outlined"
+            required
+            label="Zip"
             name="zip"
             value={this.state.zip}
             placeholder="Zip"
@@ -91,18 +110,33 @@ class CustomerInfoForm extends React.Component {
             maxLength={20}
             onChange={(event) => this.handleChange(event, "zip")}
           />
-          <select
-						required
+          <br />
+          <Select
+            variant="outlined"
+            required
             name="type"
             value={this.state.type}
-            onInput={(event) => this.handleChange(event, "type")}
+            onChange={(event) => this.handleChange(event, "type")}
           >
-            <option value="delivery">Delivery</option>
-            <option value="pickup">Pickup</option>
-          </select>
-          <button type="submit">Review Order</button>
+            <MenuItem value="delivery">Delivery</MenuItem>
+            <MenuItem value="pickup">Pickup</MenuItem>
+          </Select>
+          <br />
+          <Button id="review" variant="contained" color="primary" type="submit">
+            Review Order
+          </Button>
         </form>
-        <span>
+        <Button
+          id="previous"
+          variant="contained"
+          color="primary"
+          type="submit"
+          onClick={this.previous}
+        >
+          previous
+        </Button>
+        <br />
+        <span className="total">
           Total: $
           {pizzas &&
             pizzas

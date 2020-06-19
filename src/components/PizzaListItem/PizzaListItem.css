@@ -1,14 +1,33 @@
 img {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border-radius: 10%;
 }
 
-#menuItem{
+#menuItem {
   display: inline-block;
-  margin: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 1.5%;
+  margin-top: 1%;
 }
 
-#menuBtn{
-margin:3%;
+#menuBtn {
+  padding: 2%;
+}
+
+#namePrice {
+  text-align: center;
+  word-break: normal;
+}
+
+#description {
+  text-align: center;
+  margin: auto;
+  word-break: normal;
+  width: 90%;
+  overflow: hidden;
+  font-size: 60%;
+  padding: 5%;
+  /* text-align: justify; */
 }

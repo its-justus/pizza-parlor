@@ -3,8 +3,13 @@ import axios from "axios";
 import { connect } from "react-redux";
 import swal from "sweetalert";
 import { withRouter } from "react-router";
+import { Input, TextField, Button, Select, MenuItem, Paper} from "@material-ui/core";
 
 class Checkout extends React.Component {
+  previous = (event) => {
+    event.preventDefault();
+    this.props.history.push("/customer-info");
+  };
   // checkoutSubmit handles all the functions of completing an order
   checkoutSubmit = () => {
     // get current order pizzas
@@ -17,63 +22,59 @@ class Checkout extends React.Component {
       }, 0)
       .toFixed(2);
 
-		// send axios request to server
+    // send axios request to server
     const submitOrder = { ...this.props.currentOrder, total: Number(total) };
     swal({
-        title: "Are you sure?",
-        text: `Thank you ${customer_name} for your order. Your total is ${total}, please click 'ok' to confirm`,
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
+      title: "Are you sure?",
+      text: `Thank you ${customer_name} for your order. Your total is ${total}, please click 'ok' to confirm`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     }).then((response) => {
-        if (response) {
-    axios({
-      method: "POST",
-      url: "/api/order",
-      data: submitOrder,
-    }) //end axios
-      .then((response) => {
-        // reset the current order data 
-				this.props.dispatch({ type: "RESET_ORDER" });
-				// go back to the starting order page
-        this.props.history.push("/");
-      }) //end .thenresponse
-      .catch((error) => {
-        console.log(error);
-      }); //end .catchError
-            swal("Thank you for your order!", {
-                icon: "success",
-            }); //end swal
-        } else {
-            swal("Your order has been cancelled!");
-            return;
-        }//end else
+      if (response) {
+        axios({
+          method: "POST",
+          url: "/api/order",
+          data: submitOrder,
+        }) //end axios
+          .then((response) => {
+            // reset the current order data
+            this.props.dispatch({ type: "RESET_ORDER" });
+            // go back to the starting order page
+            this.props.history.push("/");
+          }) //end .thenresponse
+          .catch((error) => {
+            console.log(error);
+          }); //end .catchError
+        swal("Thank you for your order!", {
+          icon: "success",
+        }); //end swal
+      } else {
+        swal("Your order has been cancelled!");
+        return;
+      } //end else
     });
   }; // end checkoutSubmit
 
-
-
   render() {
-		// destructure current order object
-		const {
+    // destructure current order object
+    const {
       customer_name,
       street_address,
       city,
       zip,
       type,
       pizzas,
-		} = this.props.currentOrder;
-		
+    } = this.props.currentOrder;
+
     return (
       <div>
-        <h3>Your Order</h3>
-        <div>
-          {" "}
-          {/* TODO: create block (or card) that holds all of the customer's information*/}
-          {customer_name}
-          {street_address}
-          {city}
-        </div>
+        <h2>Step 3: Please confirm your order details</h2>
+        <Paper elevation = {10} style = {{width: "30%", textAlign: "center", margin: "auto"}}>
+          {customer_name} <br/>
+          {street_address} <br/>
+          {city} <br/>
+        </Paper>
         <table>
           <thead>
             <tr>
@@ -93,7 +94,7 @@ class Checkout extends React.Component {
               })}
           </tbody>
         </table>
-        <span>
+        <span className="total">
           Total: $
           {pizzas &&
             pizzas
@@ -102,7 +103,17 @@ class Checkout extends React.Component {
               }, 0)
               .toFixed(2)}
         </span>
-        <button onClick={this.checkoutSubmit}>Complete Order</button>
+        <br />
+        <Button variant="contained" color="primary" onClick={this.previous}>
+          Previous
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.checkoutSubmit}
+        >
+          Complete Order
+        </Button>
       </div>
     ); // end return
   } // end render

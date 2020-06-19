@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
+        <h1 className="App-title">V = Pi(z*z)a</h1>
       </header>
     ); // end return
   } // end render
