@@ -1,10 +1,8 @@
 # React Pizza Parlor
-TODO: Update screenshots below with our own design
-TODO: Update stretch goals and explain which ones we got to
-
-
 The purpose of this application is to simulate a website in which customers can select pizzas from a menu, 
-enter in their information, and then review their order and information for checkout.
+enter in their information, and then review their order and information before checkout.
+NOTE: this does NOT include actual money transfer functionality. Please enter personal information at your own risk.
+
 It will also have a special page (accesible through `http://localhost:3000/admin`) that displays the
 name, time, and order total for each of the orders placed.
 
@@ -15,7 +13,7 @@ Create a database titled: `pizza_parlor`
 
 **Import data**
 
-See database.sql for more database information
+See database.sql for information on creating tables within your database.
 
 **Start your server**
 
@@ -78,40 +76,38 @@ npm run client
 
 ## BASE REQUIREMENTS
 
-Your client has asked your team to build a pizza ordering system.
-
 ### ORDER - SELECT PIZZA
 
-When visiting [http://localhost:3000/](http://localhost:3000/) display all of the pizzas on the screen. Allow users to add or remove each pizza they would like to order. **Base mode: only allow the user to have one of each pizza in their cart.** Show the total cost of items in the cart in the top right of this page. 
+When visiting [http://localhost:3000/](http://localhost:3000/) display all of the pizzas on the screen. Allow users to add or remove each pizza they would like to order. **In this mode, we only allow the user to have one of each pizza in their cart.** Total cost of items in the cart is shown on the page. 
 
-This page should have a next button that brings the user to the **enter order details page**.
+This page has a next button that brings the user to the **enter order details page**.
 
 ![Select Pizza View](/images_readme/select_pizza.png?raw=true)
 
 ### ORDER - ENTER CUSTOMER INFORMATION
 
-Collect user information, *name*, *street address*, *city* and *zip*. This page should have an option to select pickup vs. delivery. The total cost of the order should appear in the top right of this page. This page should have a next button that brings the user to the **checkout** page.
+This page collects user information, *name*, *street address*, *city* and *zip*. This page has an option to select pickup vs. delivery. The total cost of the order appears in the top right of this page. This page has a next button that brings the user to the **checkout** page.
 
 ![Select Pizza View](/images_readme/customer_info.png?raw=true)
 
 ### ORDER - CHECKOUT
 
-Users should not be able to modify item totals on this screen. When they click checkout, the user information, order total and array of pizzas should be sent to the server. After the checkout is complete, navigate the user back to the **select pizza** page.
+Users do not have the ability to modify items on this screen. When they click checkout, the user information, order total and array of pizzas are sent to the server. After the checkout is complete, the user is navigated back to the **select pizza** page.
 
 ![Select Pizza View](/images_readme/confirmation.png?raw=true)
 
 ### ADMIN - ORDERS
 
-This page **should not** appear in the navigation bar. Eventually the client would like to add authentication but for now, it will be available to anyone with the url [http://localhost:3000/admin](http://localhost:3000/admin). This page will display the name, time and order total for each of the orders placed.
+This page does not appear on any nav bar. The client would like to add authentication but for now, this page will be available to anyone with the url [http://localhost:3000/admin](http://localhost:3000/admin). This page displays the name, time and order total for each of the orders placed.
 
 ![Admin Page](images_readme/admin.png?raw=true)
 
 
 ## STRETCH GOALS
 
-- Improve the styling of the app using Material-UI cards, buttons, nav bar and icons.
-- Allow the user to go back to previous pages (until they've completed checkout).
-- Display a list of pizzas for each order on the orders page.
+X Improve the styling of the app using Material-UI cards, buttons, nav bar and icons.
+X Allow the user to go back to previous pages (until they've completed checkout).
+X Display a list of pizzas for each order on the orders page.
 - Add pictures to the `public/images` folder and update the image url for each pizza in the database.
 - Add a button on the orders page to track delivery status.
 - Allow admins to click on an order and see all of the details for that order (which pizzas were a part of that particular order). For the details of the order with `id` of `1`, it will be available to anyone with the url [http://localhost:3000/order/1](http://localhost:3000/order/1). This route is not built on the server, so you will need to create it.
