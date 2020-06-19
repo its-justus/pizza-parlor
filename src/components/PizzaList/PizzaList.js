@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import PizzaListItem from '../PizzaListItem/PizzaListItem';
 import { connect } from 'react-redux';
-import axios from "axios";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
 import { withRouter } from "react-router";
 
 class PizzaList extends Component {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
 import "./PizzaListItem.css";
