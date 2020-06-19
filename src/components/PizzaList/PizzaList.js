@@ -21,6 +21,7 @@ next = () => {
     const { pizzas, toggle } = this.props;
     return (
       <div>
+        <h1>Step 1: Select Your Pizza</h1>
         {/* TODO: NEED TOTAL DISPLAYED ON THIS 'page' */}
         <ul>
           {pizzas.map((item, i) => {
