@@ -86,25 +86,25 @@ When visiting [http://localhost:3000/](http://localhost:3000/) display all of th
 
 This page should have a next button that brings the user to the **enter order details page**.
 
-![Select Pizza View](REPLACE ME)
+![Select Pizza View](/images_readme/select_pizza.png?raw=true)
 
 ### ORDER - ENTER CUSTOMER INFORMATION
 
 Collect user information, *name*, *street address*, *city* and *zip*. This page should have an option to select pickup vs. delivery. The total cost of the order should appear in the top right of this page. This page should have a next button that brings the user to the **checkout** page.
 
-![Select Pizza View](REPLACE ME)
+![Select Pizza View](/images_readme/customer_info.png?raw=true)
 
 ### ORDER - CHECKOUT
 
 Users should not be able to modify item totals on this screen. When they click checkout, the user information, order total and array of pizzas should be sent to the server. After the checkout is complete, navigate the user back to the **select pizza** page.
 
-![Select Pizza View](REPLACE ME)
+![Select Pizza View](/images_readme/confirmation.png?raw=true)
 
 ### ADMIN - ORDERS
 
 This page **should not** appear in the navigation bar. Eventually the client would like to add authentication but for now, it will be available to anyone with the url [http://localhost:3000/admin](http://localhost:3000/admin). This page will display the name, time and order total for each of the orders placed.
 
-![Select Pizza View](REPLACE ME)
+![Admin Page](images_readme/admin.png?raw=true)
 
 
 ## STRETCH GOALS
