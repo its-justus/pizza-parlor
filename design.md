@@ -82,6 +82,7 @@ change delivery/Pickup to radio input type?
 Fromat and make nice customer information on Checkout Page
 FIX ADMIN PAGE
 Alert user if data is not filled out on customer form
+How to make it so when user refreshes page, they are sent back to "start" (i.e. pizza list page)
 
 At some point... update all pizza images so they display correct image(i.e. do they look correct?)
 When all works, remove navlinks

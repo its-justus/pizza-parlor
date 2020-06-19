@@ -37,8 +37,9 @@ class CustomerInfoForm extends React.Component {
 		console.log("CustomerInfoForm.render()", this.state);
 		return(
 			// TODO:NEED TOTAL DISPLAYED ON THIS 'page'
+			//Why doesn't 'required' work on an input?
 			<form>
-				<input
+				<input required
 					name="customer_name"
 					value={this.state.customer_name}
 					placeholder="Name"

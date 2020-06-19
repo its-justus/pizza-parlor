@@ -11,7 +11,7 @@ name, time, and order total for each of the orders placed.
 ### SETUP
 
 Server side code for baseline functionality has been provided. 
-Create a `pizza_parlor` database.
+Create a database titled: `pizza_parlor` 
 
 **Import data**
 
