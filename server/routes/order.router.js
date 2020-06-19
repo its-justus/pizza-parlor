@@ -35,11 +35,6 @@ router.post('/', async (req, res) => {
         const orderId = orderInsertResults.rows[0].id;
 
         await Promise.all(pizzas.map(pizza => {
-<<<<<<< HEAD
-						pizza.quantity = 1;
-=======
-            pizza.quantity = 1
->>>>>>> 184db9db5c6605b802810370b16c64040ba0a7f0
             const insertLineItemText = `INSERT INTO "line_item" ("order_id", "pizza_id", "quantity") VALUES ($1, $2, $3)`;
             const insertLineItemValues = [orderId, pizza.id, pizza.quantity];
             return client.query(insertLineItemText, insertLineItemValues);

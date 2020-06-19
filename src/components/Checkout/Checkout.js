@@ -9,26 +9,17 @@ class Checkout extends React.Component {
 		let total = pizzas.reduce((sum, cur) => { return sum + Number(cur.price) }, 0).toFixed(2)
 		console.log("total", total)
 		console.log("this.props.currentOrder", this.props.currentOrder)
-<<<<<<< HEAD
-		let submitOrder = {...this.props.currentOrder, total: Number(total)};
-		console.log(submitOrder);
-=======
 		let submitOrder = {...this.props.currentOrder, total: Number(total)}
 		console.log("submitOrder", submitOrder)
->>>>>>> 184db9db5c6605b802810370b16c64040ba0a7f0
 		axios({
 			method: "POST",
 			url: "/api/order",
 			data: submitOrder
 		})
 			.then((response) => {
-<<<<<<< HEAD
-				this.props.history.push('/');
-=======
 				// this.setState({ userInput: '' });
 				console.log("thank you for your order")
 				this.props.history.push("/")
->>>>>>> 184db9db5c6605b802810370b16c64040ba0a7f0
 			})
 			.catch((error) => {
 				console.log(error);
