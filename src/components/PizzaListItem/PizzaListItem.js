@@ -13,8 +13,8 @@ class PizzaListItem extends Component {
           {selected ? "Remove" : "Add to Cart"}
         </button>
       </li>
-    );
-  }
-}
+    ); // end return
+  } // end render
+} // end class PizzaListItem
 
 export default PizzaListItem;
