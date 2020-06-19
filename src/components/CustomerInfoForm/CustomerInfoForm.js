@@ -36,13 +36,12 @@ class CustomerInfoForm extends React.Component {
   }
 
   render() {
-    console.log("CustomerInfoForm.render()", this.state);
     const { pizzas } = this.props.currentOrder;
     return (
       // TODO:NEED TOTAL DISPLAYED ON THIS 'page'
       //Why doesn't 'required' work on an input?
       <>
-        <form>
+        <form onSubmit={this.submitInfo}>
           <input
             required
             name="customer_name"
@@ -53,6 +52,7 @@ class CustomerInfoForm extends React.Component {
             onChange={(event) => this.handleChange(event, "customer_name")}
           />
           <input
+						required
             street="street_address"
             value={this.state.street_address}
             placeholder="Street Adress"
@@ -61,6 +61,7 @@ class CustomerInfoForm extends React.Component {
             onChange={(event) => this.handleChange(event, "street_address")}
           />
           <input
+						required
             name="city"
             value={this.state.city}
             placeholder="City"
@@ -69,6 +70,7 @@ class CustomerInfoForm extends React.Component {
             onChange={(event) => this.handleChange(event, "city")}
           />
           <input
+						required
             name="zip"
             value={this.state.zip}
             placeholder="Zip"
@@ -77,6 +79,7 @@ class CustomerInfoForm extends React.Component {
             onChange={(event) => this.handleChange(event, "zip")}
           />
           <select
+						required
             name="type"
             value={this.state.type}
             onInput={(event) => this.handleChange(event, "type")}
@@ -84,7 +87,7 @@ class CustomerInfoForm extends React.Component {
             <option value="delivery">Delivery</option>
             <option value="pickup">Pickup</option>
           </select>
-          <button onClick={this.submitInfo}>Submit</button>
+          <button type="submit">Review Order</button>
         </form>
         <span>
           Total: ${/* todo fix sum to be number */}

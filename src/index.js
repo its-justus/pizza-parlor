@@ -30,12 +30,16 @@ const currentOrderReducer = (state = { pizzas: [] }, action) => {
     // payload need to be an object containing all of the customer info
     newState = { ...newState, ...action.payload };
   } else if (action.type === "ADD_PIZZA") {
-    // payload needs to be an array of pizza objects
+    // payload needs to be a pizza object
     newState = { ...newState, pizzas: [...newState.pizzas, action.payload] };
   } else if (action.type === "REMOVE_PIZZA") {
-    let filteredPizzas = newState.pizzas;
-    filteredPizzas.filter((pizza) => pizza.id === action.payload.id);
+    // payload needs to be a pizza object
+    const filteredPizzas = newState.pizzas.filter(
+      (pizza) => pizza.id !== action.payload.id
+    );
     newState = { ...newState, pizzas: filteredPizzas };
+  } else if (action.type === "RESET_ORDER") {
+    newState = { pizzas: [] };
   }
   return newState;
 };

@@ -22,7 +22,8 @@ class Checkout extends React.Component {
     })
       .then((response) => {
         // this.setState({ userInput: '' });
-        console.log("thank you for your order");
+				console.log("thank you for your order");
+				this.props.dispatch({type: "RESET_ORDER"})
         this.props.history.push("/");
       })
       .catch((error) => {
