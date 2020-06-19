@@ -12,8 +12,7 @@ import { withRouter } from "react-router";
 
 class PizzaList extends Component {
   
-  
-
+//on click of next button, directs user to customer info form
 next = () => {
   this.props.history.push('/customer-info') //takes customer to next "page"
 }
@@ -22,11 +21,10 @@ next = () => {
     const { pizzas, toggle } = this.props;
     return (
       <div>
+        {/* TODO: NEED TOTAL DISPLAYED ON THIS 'page' */}
         <ul>
-          {/* TODO: NEED TOTAL DISPLAYED ON THIS 'page' */}
           {pizzas.map((item, i) => {
             //console.log("in PizzaList", item, i);
-            
             return <PizzaListItem key={i} item={item} toggle={toggle} />;
           })}
         </ul>

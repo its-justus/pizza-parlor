@@ -9,7 +9,7 @@ class CustomerInfoForm extends React.Component {
 		street_address: '',
 		city: '',
 		zip: '',
-		type: '',
+		type: 'delivery',
 	}
 
 	handleChange = (event, fieldName) => {
@@ -17,18 +17,18 @@ class CustomerInfoForm extends React.Component {
 	}
 
 	submitInfo = (event) => {
-		//do stuff
 		event.preventDefault();
-		// navigate to confirm checkout page. this will trigger componentWillUnmount, storing the form data to the store
 		this.props.history.push('/checkout');
-	}
+			}
+
 
 	componentDidMount() {
-		//
 		const {customer_name, street_address, city, zip, type} = {...this.props.currentOrder}
-		this.setState({customer_name, street_address, city, zip, type});
+		this.setState({customer_name, street_address, city, zip});
+		if(type) {this.setState({type})};
 	}
 
+	//This is a POST?
 	componentWillUnmount() {
 		this.props.dispatch({type: "UPDATE_CUSTOMER_INFO", payload: this.state});
 	}
@@ -70,7 +70,7 @@ class CustomerInfoForm extends React.Component {
 					maxLength={20} 
 					onChange={(event) => this.handleChange(event, 'zip')} 
 				/>
-				<select name="type">
+				<select name="type" value={this.state.type} onInput={(event) => this.handleChange(event, 'type')}>
 					<option value="delivery">Delivery</option>
 					<option value="pickup">Pickup</option>
 				</select>

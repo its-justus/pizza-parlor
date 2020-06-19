@@ -42,8 +42,8 @@ class PizzaListItem extends Component {
   render() {
     const pizza = this.props.item;
     return (
-      <li>
-        Add image {this.props.item.name}: {this.props.item.price}
+      <li> 
+        {<img src = "images/INSERT.png" alt ="pizza pic" />} {this.props.item.name}: {this.props.item.price}
         {!this.state.selected ? (
           <button onClick={this.addPizzaToCart}>Add to Cart</button>
         ) : (
