@@ -4,43 +4,47 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 class Checkout extends React.Component {
+  // checkoutSubmit handles all the functions of completing an order
   checkoutSubmit = () => {
+    // get current order pizzas
     const { pizzas } = this.props.currentOrder;
-    let total = pizzas
+
+    // calculate the total price of the pizzas
+    const total = pizzas
       .reduce((sum, cur) => {
         return sum + Number(cur.price);
       }, 0)
       .toFixed(2);
-    console.log("total", total);
-    console.log("this.props.currentOrder", this.props.currentOrder);
-    let submitOrder = { ...this.props.currentOrder, total: Number(total) };
-    console.log("submitOrder", submitOrder);
+
+		// send axios request to server
+    const submitOrder = { ...this.props.currentOrder, total: Number(total) };
     axios({
       method: "POST",
       url: "/api/order",
       data: submitOrder,
     })
       .then((response) => {
-        // this.setState({ userInput: '' });
-				console.log("thank you for your order");
-				this.props.dispatch({type: "RESET_ORDER"})
+        // reset the current order data 
+				this.props.dispatch({ type: "RESET_ORDER" });
+				// go back to the starting order page
         this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }; // end checkoutSubmit
+
   render() {
-    const {
+		// destructure current order object
+		const {
       customer_name,
       street_address,
       city,
       zip,
       type,
       pizzas,
-    } = this.props.currentOrder;
-    // const {allPizzas} = this.props;
-    console.log("Checkout.render", pizzas);
+		} = this.props.currentOrder;
+		
     return (
       <div>
         <h3>Your Order</h3>
@@ -72,7 +76,7 @@ class Checkout extends React.Component {
           </tbody>
         </table>
         <span>
-          Total: ${/* todo fix sum to be number */}
+          Total: $
           {pizzas &&
             pizzas
               .reduce((sum, cur) => {
@@ -82,22 +86,13 @@ class Checkout extends React.Component {
         </span>
         <button onClick={this.checkoutSubmit}>Complete Order</button>
       </div>
-    );
-  }
-}
-// const array1 = [1, 2, 3, 4];
-// const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-// // 1 + 2 + 3 + 4
-// console.log(array1.reduce(reducer));
-// // expected output: 10
-
-// // 5 + 1 + 2 + 3 + 4
-// console.log(array1.reduce(reducer, 5));
-// // expected output: 15
+    ); // end return
+  } // end render
+} // end class Checkout
 
 const mapStateToProps = (state) => {
-  return {
+	// pull current order from Redux store
+	return {
     currentOrder: state.currentOrder,
   };
 };
