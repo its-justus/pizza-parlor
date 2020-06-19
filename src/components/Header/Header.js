@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-// import './Header.css';
 
+// header is a controlled component used to render the site header
 class Header extends Component {
   render() {
     return (
       <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
-    );
-  }
-}
+        <h1 className="App-title">Prime Pizza</h1>
+      </header>
+    ); // end return
+  } // end render
+} // end class Header
+
 export default Header;

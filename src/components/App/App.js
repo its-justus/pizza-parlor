@@ -17,30 +17,29 @@ import Footer from "../Footer/Footer";
 
 //NavLinks being used as a temp solution, will tie to next button later
 
+// App is our app container component
 class App extends Component {
   componentDidMount() {
     // react Component method
     this.refreshPizzas();
   }
 
+	// refreshPizzas gets the pizzas from the database and adds them to the Redux state
   refreshPizzas = () => {
-    const { dispatch } = this.props;
-    axios({
-      method: "GET",
-      url: "/api/pizza",
-    })
+		// grab the dispatch function from props
+		const { dispatch } = this.props;
+		
+		// axios server request
+    axios.get("/api/pizza")
       .then((response) => {
-        console.log("This is in GET in app", response.data);
         dispatch({ type: "GET_PIZZAS", payload: response.data });
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }; // end refreshPizzas
 
-  // state = {
-  //   toggle: false,
-  // }
+	// React render function
   render() {
     return (
       <Router>
@@ -80,8 +79,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-    );
-  }
-}
+    ); // end return
+  } // end render
+} // end App
 
 export default connect()(App);
