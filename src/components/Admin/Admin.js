@@ -17,7 +17,7 @@ class Admin extends Component {
       .then((response) => {
         console.log("This is in GET in admin for order", response);
         // response.data will be the array of artists
-        dispatch({ type: "SET_ALL_ORDER", payload: response });
+        dispatch({ type: "SET_ALL_ORDER", payload: response.data });
         // this.setState({
         //   artists: response.data,
         // });

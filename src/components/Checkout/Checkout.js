@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 class Checkout extends React.Component {
 	checkoutSubmit = () => {
@@ -9,15 +10,16 @@ class Checkout extends React.Component {
 		console.log("total", total)
 		console.log("this.props.currentOrder", this.props.currentOrder)
 		let submitOrder = {...this.props.currentOrder, total: Number(total)}
+		console.log("submitOrder", submitOrder)
 		axios({
 			method: "POST",
 			url: "/api/order",
 			data: submitOrder
 		})
 			.then((response) => {
-				this.props.refreshPizzas();
 				// this.setState({ userInput: '' });
-
+				console.log("thank you for your order")
+				this.props.history.push("/")
 			})
 			.catch((error) => {
 				console.log(error);
@@ -76,4 +78,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(Checkout);
+export default withRouter(connect(mapStateToProps)(Checkout));
