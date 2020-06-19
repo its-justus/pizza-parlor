@@ -9,7 +9,8 @@ import { Provider } from "react-redux";
 
 const orderReducer = (state = [], action) => {
   let newState = [...state];
-  if (action.type === "SET_ALL_ORDER") {
+  if (action.type === "SET_ALL_ORDERS") {
+    // payload must be an array of order objects
     newState = [...action.payload];
   }
   return newState;
@@ -19,6 +20,7 @@ const orderReducer = (state = [], action) => {
 const pizzaReducer = (state = [], action) => {
   let newState = [...state];
   if (action.type === "GET_PIZZAS") {
+    // payload must be an array of pizza objects
     newState = [...action.payload];
   }
   return newState;

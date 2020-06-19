@@ -48,9 +48,9 @@ class PizzaList extends Component {
         </ul>
         <button onClick={this.next}>NEXT</button>
       </div>
-    );
-  }
-}
+    ); // end return
+  } // end render
+} // end PizzaList
 
 // pull state from Redux state
 const mapStateToProps = (state) => {

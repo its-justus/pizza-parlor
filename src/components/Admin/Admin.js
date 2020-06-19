@@ -3,30 +3,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+// Admin represents a hidden view for the establishment owner so they can see 
+// and manage current orders
 class Admin extends Component {
   componentDidMount() {
-    this.refreshAdmin();
-  }
-  //GETs list of orders from database
-  refreshAdmin = () => {
+    this.refreshOrders();
+	}
+	
+  //GETs list of orders from database and puts them in the Redux state
+  refreshOrders = () => {
     const { dispatch } = this.props;
-    axios({
-      method: "GET",
-      url: "/api/order",
-    })
+    axios.get("/api/order")
       .then((response) => {
-        console.log("This is in GET in admin for order", response);
-        // response.data will be the array of artists
-        dispatch({ type: "SET_ALL_ORDER", payload: response.data});
-        // this.setState({
-        //   artists: response.data,
-        // });
+        // response.data will be the array of orders
+        dispatch({ type: "SET_ALL_ORDERS", payload: response.data});
       })
       .catch((error) => {
         console.log(error);
       });
-  }; //end refreshAdmin
+  }; //end refreshOrders
 
+	// React render function
   render() {
     const { orders } = this.props;
     console.log("this is orders", orders);
@@ -57,6 +54,7 @@ class Admin extends Component {
   }
 }
 
+// pull props from Redux state
 const mapStateToProps = (state) => {
   return {
     orders: state.orders,
@@ -66,3 +64,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(Admin);
 
 // I am the new admin now.
+// well I am root, so there :P
