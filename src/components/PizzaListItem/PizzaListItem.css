@@ -1,3 +1,14 @@
 img {
-  height: 50px;
+  height: 250px;
+  width: 250px;
+  border-radius: 10%;
+}
+
+#menuItem{
+  display: inline-block;
+  margin: 3%;
+}
+
+#menuBtn{
+margin:3%;
 }

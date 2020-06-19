@@ -79,7 +79,7 @@ turn customer info form into sweetalerts popup
 STRETCH:build confirmation page (so "are you sure you want to checkout")
 make sure we handle total (display on every page)
 change delivery/Pickup to radio input type?
-Fromat and make nice customer information on Checkout Page
+Format and make nice customer information on Checkout Page
 FIX ADMIN PAGE
 Alert user if data is not filled out on customer form
 How to make it so when user refreshes page, they are sent back to "start" (i.e. pizza list page)

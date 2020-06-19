@@ -1,7 +1,7 @@
 # React Pizza Parlor
 TODO: Update screenshots below with our own design
 TODO: Update stretch goals and explain which ones we got to
-TODO: Kyle will spellcheck things here
+
 
 The purpose of this application is to simulate a website in which customers can select pizzas from a menu, 
 enter in their information, and then review their order and information for checkout.
@@ -82,29 +82,29 @@ Your client has asked your team to build a pizza ordering system.
 
 ### ORDER - SELECT PIZZA
 
-When visiting [http://localhost:3000/](http://localhost:3000/) display all of the pizzas on the screen. Allow users to add or remove each pizza they would like to order. **For base mode, only allow the user to have one of each pizza in their cart.** Show the total cost of items in the cart in the top right of this page. 
+When visiting [http://localhost:3000/](http://localhost:3000/) display all of the pizzas on the screen. Allow users to add or remove each pizza they would like to order. **Base mode: only allow the user to have one of each pizza in their cart.** Show the total cost of items in the cart in the top right of this page. 
 
 This page should have a next button that brings the user to the **enter order details page**.
 
-![Select Pizza View](wireframes/screen-one.png)
+![Select Pizza View](REPLACE ME)
 
 ### ORDER - ENTER CUSTOMER INFORMATION
 
 Collect user information, *name*, *street address*, *city* and *zip*. This page should have an option to select pickup vs. delivery. The total cost of the order should appear in the top right of this page. This page should have a next button that brings the user to the **checkout** page.
 
-![Select Pizza View](wireframes/screen-two.png)
+![Select Pizza View](REPLACE ME)
 
 ### ORDER - CHECKOUT
 
 Users should not be able to modify item totals on this screen. When they click checkout, the user information, order total and array of pizzas should be sent to the server. After the checkout is complete, navigate the user back to the **select pizza** page.
 
-![Select Pizza View](wireframes/screen-three.png)
+![Select Pizza View](REPLACE ME)
 
 ### ADMIN - ORDERS
 
 This page **should not** appear in the navigation bar. Eventually the client would like to add authentication but for now, it will be available to anyone with the url [http://localhost:3000/admin](http://localhost:3000/admin). This page will display the name, time and order total for each of the orders placed.
 
-![Select Pizza View](wireframes/screen-admin.png)
+![Select Pizza View](REPLACE ME)
 
 
 ## STRETCH GOALS
