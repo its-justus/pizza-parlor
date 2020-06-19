@@ -4,10 +4,15 @@ import { connect } from "react-redux";
 
 class Checkout extends React.Component {
 	checkoutSubmit = () => {
+		const { pizzas } = this.props.currentOrder;
+		let total = pizzas.reduce((sum, cur) => { return sum + Number(cur.price) }, 0).toFixed(2)
+		console.log("total", total)
+		console.log("this.props.currentOrder", this.props.currentOrder)
+		let submitOrder = {...this.props.currentOrder, total: Number(total)}
 		axios({
 			method: "POST",
 			url: "/api/order",
-			data: this.props.currentOrder
+			data: submitOrder
 		})
 			.then((response) => {
 				this.props.refreshPizzas();

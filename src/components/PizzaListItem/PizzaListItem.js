@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
+import "./PizzaListItem.css";
+
 class PizzaListItem extends Component {
   state = {
     selected: false,
@@ -39,11 +41,12 @@ class PizzaListItem extends Component {
     }));
 
   }
+  //DESIGN QUESTION: should we have the descriptions appear on a click like we did in gallery? Or just display it below pic?
   render() {
     const pizza = this.props.item;
     return (
       <li> 
-        {<img src = "images/INSERT.png" alt ="pizza pic" />} {this.props.item.name}: {this.props.item.price}
+        {<img src = {this.props.item.image_path} alt ="pizza pic" />} {this.props.item.name}: {this.props.item.price}
         {!this.state.selected ? (
           <button onClick={this.addPizzaToCart}>Add to Cart</button>
         ) : (
