@@ -1,4 +1,9 @@
 # React Pizza Parlor
+
+# Archive Notice
+I am archiving this repo as it has not seen any updates since it's completion. Feel free to fork as you wish.
+- Ian
+
 The purpose of this application is to simulate a website in which customers can select pizzas from a menu, 
 enter in their information, and then review their order and information before checkout.
 NOTE: this does NOT include actual money transfer functionality. Please enter personal information at your own risk.
